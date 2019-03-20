@@ -3,3 +3,16 @@ dist: xenial
 sudo: required
 script:
 - bash test.sh
+
+before_deploy:
+- bash build.sh
+
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: JZuRjJiGobdxmpqXwXyhgxfu38rV7Ux1qi/9WtmvQ909uAOa+PR9dRY3/9jtIfvo7hVl8CJt1gre2VUEAMe3Ve9VRSmBd/8A4dzxsCU8gkuDyKrBFCotW5LbbMV6hTl8IttXqBuuWUsWa3wXFZyiQwxGDna+GErg2E12r4mAQP0w8CcYNObmpP6E/O8HgFM9JpjX3TdptUCFRz2KrGHwzJKvJQimrlH37BtPXgTUAGYxbartye080PCZjFnd3HAA7P/dfTKqikPWdnCRig56N/UeCYV3hkclclFuKJWuIJbo0OqpMuTS1lRL0Pj5x+jp8zddWWfrqP98cvjr3wMHo2CJRfsUhCMSKpWmoPjhQkg67aeleZ1PGC51ubtFdSXShb7GTU2RhTltcRFaI4VYyUw6pFKkceNrHPrWau6gyd9z7JrLg+BRk//Uliy+nxR12CK5AoKjTers+KLReeB6lNPhtgc8EIbgcKupJLoTCmn5p4V82mpO+vYnTr2St7/JYA0c1YjnY6ywMt7PXgY3+yWfJzJv2/UoxJmDPYBdBSix6ba6xpbwDa/yshASY0tCCFZhJM/Wud4fMPdVOV372brajX6YxImOt31+toAlCyUcn9AXt1u1EP2XFUdc5TWY/Zuz9/kmCihguARz17Nh+1HZxlX0fbA5Muj3NzmI56Q=
+  file: hello-world
+  on:
+    repo: sharabinth/go-helloworld
+    tags: true
